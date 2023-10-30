@@ -11,18 +11,7 @@ import os
 import matplotlib.pyplot as plt
 import enchant
 from string import ascii_uppercase
-from gtts import gTTS
-import pygame
-from gtts import gTTS
-from playsound import playsound  
 
-def text_to_speech(text):
-    tts = gTTS(text)
-    tts.save("output.mp3")
-    pygame.mixer.init()
-    sound = pygame.mixer.Sound("output.mp3")
-    sound.play()
-    pygame.time.delay(1500)
 
 
 class Application:
