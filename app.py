@@ -12,9 +12,8 @@ import matplotlib.pyplot as plt
 import enchant
 from string import ascii_uppercase
 
-
-
-class Application:
+delay(1500)
+ation:
     def __init__(self):
         self.directory = 'model/'
         self.hs = enchant.Dict("en_US")
@@ -46,11 +45,31 @@ class Application:
         self.loaded_model_smn = model_from_json(self.model_json_smn)
         self.loaded_model_smn.load_weights(self.directory+"model-bw_smn.h5")
 
-        self.ct = {}
-        self.ct['blank'] = 0
-        self.blank_flag = 0
-        for i in ascii_uppercase:
-            self.ct[i] = 0
+        def action6(self):
+        # Display the gesture history in a pop-up window or a separate section of the UI
+            if self.gesture_history:
+                history_text = "\n".join(self.gesture_history)
+                history_window = tk.Toplevel(self.root)
+                history_window.title("Gesture History")
+                history_label = tk.Label(history_window, text=history_text, font=("Times", 14))
+                history_label.pack()
+
+        def predict(self, test_image):
+        # ... (existing code)
+
+            # Update the gesture history with the current recognized symbol
+            if self.current_symbol != 'blank':
+                self.gesture_history.append(self.current_symbol)
+
+            # Limit the gesture history to a certain number of gestures (e.g., 10)
+            if len(self.gesture_history) > 10:
+                self.gesture_history.pop(0)  # Remove the oldest gesture
+
+            self.ct = {}
+            self.ct['blank'] = 0
+            self.blank_flag = 0
+            for i in ascii_uppercase:
+                self.ct[i] = 0
         print("Loaded model from disk")
         self.root = tk.Tk()
         self.root.title("           Sign language to Text Converter         ")
